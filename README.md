@@ -36,6 +36,12 @@ Urban Heat Islands are metropolitan areas that are significantly warmer than the
 7.  **Interactive Map Output:**
     *   Generates a dynamic HTML map showcasing the mean LST, NDVI, Land Cover, and identified UHI zones, allowing users to zoom, pan, and toggle layers.
 
+Visuals of Result
+![feature_distributions](https://github.com/user-attachments/assets/eb3b7d4e-0d04-4116-9602-90948f135e89)
+![enhanced_model_evaluation](https://github.com/user-attachments/assets/8b5a3310-5e75-4b8b-b478-1e935ffa9a18)
+![ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/da4be6f3-6a5b-4c6b-9093-e135ce342aac)
+
+
 ## How to Run the Project:
 1.  **Google Earth Engine Setup:**
     *   Sign up for a free GEE account: [earthengine.google.com/signup](https://earthengine.google.com/signup/)
