@@ -1,7 +1,7 @@
 # -----------------------------------------------------------------------------
 # Project: Urban Heat Island (UHI) Detection & Prediction in New Delhi
 # Author: Arham Ansari
-# Date: 30-06-2025
+# Date: 04-07-2025
 # Description: This comprehensive script leverages Google Earth Engine (GEE)
 #              to acquire satellite imagery (LST, NDVI, NDBI, Land Cover),
 #              performs data cleaning, exploratory data analysis (EDA),
