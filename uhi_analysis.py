@@ -1,4 +1,14 @@
-# This is main script
+# -----------------------------------------------------------------------------
+# Project: Urban Heat Island (UHI) Detection & Prediction in New Delhi
+# Author: Arham Ansari
+# Date: 30-06-2025
+# Description: This comprehensive script leverages Google Earth Engine (GEE)
+#              to acquire satellite imagery (LST, NDVI, NDBI, Land Cover),
+#              performs data cleaning, exploratory data analysis (EDA),
+#              detects Urban Heat Island zones using K-Means clustering,
+#              and predicts Land Surface Temperature (LST) using Random Forest.
+#              Results are visualized on interactive maps and plots.
+# -----------------------------------------------------------------------------
 
 import ee
 import geemap
@@ -9,7 +19,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import os
 import logging
-import shap # Make sure to install shap: pip install shap
+import shap
 
 from sklearn.model_selection import train_test_split, RandomizedSearchCV, cross_val_score
 from sklearn.cluster import KMeans
