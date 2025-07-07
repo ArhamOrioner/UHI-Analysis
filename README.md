@@ -106,7 +106,7 @@ Figure 1: Distributions of LST, NDVI, NDBI, and LST by Land Cover Type.
 
 Figure 2: Model performance metrics including Actual vs Predicted, Residuals, and Feature Importances.
 
-![alt text](https://github.com/user-attachments/assets/da4be6f3-6a5b-4c6b-9093-e135ce342aac)
+![alt text](https://github.com/user-attachments/assets/baf294b7-9d70-4578-85eb-b63b78c6758f)
 
 Figure 3: Interactive map showcasing various layers like LST, Land Cover, and UHI Zones (GIF representation).
 
