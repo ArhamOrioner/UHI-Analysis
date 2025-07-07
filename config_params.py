@@ -1,47 +1,92 @@
-# This is parameter script
+import requests
+import json
 
-import ee
-import os
+def get_city_roi_bounds(city_name):
+    """
+    Finds the approximate bounding box (ROI_BOUNDS) for a given city name
+    using the OpenStreetMap Nominatim API.
 
-PROJECT_NAME = "Urban Heat Island (UHI) Detection & Prediction in New Delhi"
-AUTHOR = "Arham Ansari"
-DATE = "30-06-2025"
+    Args:
+        city_name (str): The name of the city (e.g., "Mumbai", "New Delhi").
 
-CITY_NAME = "New Delhi"
-ROI_BOUNDS = [76.5, 28.1, 78.5, 29.5]
-ROI_GEOMETRY = ee.Geometry.Rectangle(ROI_BOUNDS)
+    Returns:
+        list: A list of [west_longitude, south_latitude, east_longitude, north_latitude]
+              if the city is found, otherwise None.
+    """
+    # Nominatim API endpoint for searching
+    url = "https://nominatim.openstreetmap.org/search"
+    
+    # Parameters for the API request
+    params = {
+        'q': city_name,         # The query string (city name)
+        'format': 'jsonv2',     # Request JSON output (version 2 for better structure)
+        'limit': 1              # Limit to 1 result (usually the most relevant)
+    }
+    
+    # It's good practice to set a User-Agent for Nominatim requests
+    # Replace 'YourApplicationName/1.0' with something descriptive if you use this in a project.
+    headers = {
+        'User-Agent': 'UHI_Analysis_Script/1.0 (your_email@example.com)'
+    }
 
-ANALYSIS_YEARS = [2022, 2023]
-SEASONS_TO_ANALYZE = {
-    'Summer': (6, 8),
-    'Winter': (12, 2)
-}
+    print(f"Searching for '{city_name}' using Nominatim API...")
+    try:
+        response = requests.get(url, params=params, headers=headers)
+        response.raise_for_status()  # Raise an HTTPError for bad responses (4xx or 5xx)
+        
+        data = response.json()
 
-PRIMARY_LST_SOURCE = 'MODIS' # Can be 'MODIS' or 'LANDSAT'
+        if not data:
+            print(f"No results found for '{city_name}'. Please try a different name or spelling.")
+            return None
+        
+        # The first result is usually the most relevant
+        first_result = data[0]
+        
+        # Nominatim boundingbox format: [latitude_south, latitude_north, longitude_west, longitude_east]
+        # We need: [longitude_west, latitude_south, longitude_east, latitude_north] for ee.Geometry.Rectangle
+        bbox = first_result['boundingbox']
+        
+        # Convert string coordinates to float and reorder
+        south_lat = float(bbox[0])
+        north_lat = float(bbox[1])
+        west_lon = float(bbox[2])
+        east_lon = float(bbox[3])
+        
+        roi_bounds = [west_lon, south_lat, east_lon, north_lat]
+        
+        print(f"\nFound bounds for '{city_name}':")
+        print(f"  West Longitude: {west_lon}")
+        print(f"  South Latitude: {south_lat}")
+        print(f"  East Longitude: {east_lon}")
+        print(f"  North Latitude: {north_lat}")
+        
+        return roi_bounds
 
-START_DATE = '2022-01-01'
-END_DATE = '2022-12-31'
+    except requests.exceptions.RequestException as e:
+        print(f"Network error or API request failed: {e}")
+        print("Please check your internet connection or try again later.")
+        return None
+    except json.JSONDecodeError:
+        print(f"Error decoding JSON response from API. Invalid response format.")
+        return None
+    except KeyError:
+        print(f"Could not extract bounding box from API response for '{city_name}'. Response might be incomplete.")
+        return None
+    except ValueError as e:
+        print(f"Error converting coordinates to numbers: {e}")
+        return None
 
-COMMON_RESOLUTION_METERS = 1000
-
-NUM_PIXELS_FOR_ML = 5000
-
-RANDOM_STATE = 42
-
-UHI_CLUSTERS = 'auto' # or an integer number of clusters, e.g., 3
-UHI_CLUSTER_RANGE = range(2, 6) # Range for automatic cluster determination
-
-RF_N_ESTIMATORS = 200
-RF_MAX_DEPTH = 15
-RF_MIN_SAMPLES_SPLIT = 5
-RF_MIN_SAMPLES_LEAF = 2
-
-PERFORM_HYPERPARAMETER_TUNING = True
-TUNING_ITERATIONS = 50
-
-OUTPUTS_DIR = 'outputs'
-
-WORLDCOVER_YEAR = 2021 # Use 2020 or 2021. Script defaults to 2021 if other year is chosen.
-
-LOG_FILE = os.path.join(OUTPUTS_DIR, 'uhi_analysis.log')
-LOG_LEVEL = 'INFO'
+if __name__ == "__main__":
+    city = input("Enter city name (e.g., New Delhi, Mumbai, Tokyo): ")
+    
+    bounds = get_city_roi_bounds(city)
+    
+    if bounds:
+        print("\n------------------------------------------------------------")
+        print("Copy the following line and paste it into your uhi_analysis.py script:")
+        print(f"ROI_BOUNDS = {bounds}")
+        print("------------------------------------------------------------")
+        print("\nNote: This is an approximate bounding box for the city.")
+        print("For more precise or custom study areas, use the Google Earth Engine Code Editor")
+        print("drawing tools to define your own geometry and get its coordinates.")
