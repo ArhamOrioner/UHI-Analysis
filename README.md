@@ -94,17 +94,17 @@ LST Hot/Cold Spots from Getis-Ord Gi* analysis
 
 The map includes a comprehensive legend and allows users to zoom, pan, and toggle layers for detailed exploration.
 
-Visuals of Results
+Visuals of Results - Mumbai Area Test Results
 
 Examples of generated plots and the interactive map (actual outputs will vary based on city and parameters):
 
-![alt text](https://github.com/user-attachments/assets/eb3b7d4e-0d04-4116-9602-90948f135e89)
+![alt text](https://github.com/user-attachments/assets/1ed9cf63-bee5-4761-8fc5-6c73997ac44e)
 
-Figure 1: Distributions of LST, NDVI, NDBI, and LST by Land Cover Type.
+Figure 1: Distributions.
 
-![alt text](https://github.com/user-attachments/assets/8b5a3310-5e75-4b8b-b478-1e935ffa9a18)
+![alt text](https://github.com/user-attachments/assets/7903159e-2374-4ace-a85a-91b3bfce2e50)
 
-Figure 2: Model performance metrics including Actual vs Predicted, Residuals, and Feature Importances.
+Figure 2: Model performance metrics.
 
 ![alt text](https://github.com/user-attachments/assets/baf294b7-9d70-4578-85eb-b63b78c6758f)
 
