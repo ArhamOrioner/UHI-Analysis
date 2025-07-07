@@ -1,9 +1,9 @@
-# 🏙️🔥 Urban Heat Island (UHI) Detection & Prediction with Satellite Data and Machine Learning
+# 🏙️ Urban Heat Island (UHI) Detection & Prediction with Satellite Data and Machine Learning
 
 [![Python 3.9+](https://img.shields.io/badge/Python-3.9%2B-blue.svg)](https://www.python.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Stars](https://img.shields.io/github/stars/your-github-username/urban-heat-island-prediction-ml?style=social)](https://github.com/your-github-username/urban-heat-island-prediction-ml)
-[![Issues](https://img.shields.io/github/issues/your-github-username/urban-heat-island-prediction-ml)](https://github.com/your-github-username/urban-heat-island-prediction-ml/issues)
+[![Stars](https://img.shields.io/github/stars/your-github-username/urban-heat-island-prediction-ml?style=social)](https://github.com/ArhamOrioner/UHI-Analysis)
+[![Issues](https://img.shields.io/github/issues/your-github-username/urban-heat-island-prediction-ml)](https://github.com/ArhamOrioner/UHI-Analysis/issues))
 
 ---
 
