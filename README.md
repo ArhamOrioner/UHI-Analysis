@@ -63,6 +63,7 @@ Follow these steps to set up the project and run your first analysis.
 Prerequisites
 Python 3.9+
 Git
+
 Step 1: Set Up Your Environment
 You have two options for setting up the environment. The Cloud Shell method is highly recommended for its simplicity.
 Option A (Recommended): Google Cloud Shell
@@ -87,6 +88,7 @@ code
 Bash
 git clone https://github.com/ArhamOrioner/UHI-Analysis.git
 cd UHI-Analysis
+
 Step 2: Install Dependencies
 It's highly recommended to use a Python virtual environment.
 Create a virtual environment:
@@ -101,6 +103,7 @@ Install required packages from the requirements file:
 code
 Bash
 pip install -r requirements.txt
+
 Step 3: Run an Analysis
 Execute the analysis using app.py. The script will automatically find the geographic boundaries for the specified city.
 Basic Example (Las Vegas, 2023)
