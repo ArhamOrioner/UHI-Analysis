@@ -89,15 +89,17 @@ git clone https://github.com/ArhamOrioner/UHI-Analysis.git
 cd UHI-Analysis
 Step 2: Install Dependencies
 It's highly recommended to use a Python virtual environment.
+Create a virtual environment:
 code
 Bash
-# Create a virtual environment
 python3 -m venv venv
-
-# Activate it
+Activate it:
+code
+Bash
 source venv/bin/activate
-
-# Install required packages from the requirements file
+Install required packages from the requirements file:
+code
+Bash
 pip install -r requirements.txt
 Step 3: Run an Analysis
 Execute the analysis using app.py. The script will automatically find the geographic boundaries for the specified city.
@@ -111,10 +113,12 @@ Bash
 python app.py --city "Dubai" --years 2022 2023 --source MODIS
 Note: A full analysis for a single year can take 5-10 minutes to complete, depending on the size of the city and the number of available satellite images. The hyperparameter tuning step is the most time-intensive part.
 All results, including plots, logs, and the interactive map, will be saved in the outputs/ directory.
+
 🔮 Future Enhancements
 Advanced Feature Integration: Incorporate population density, building height, and wind patterns.
 Temporal Trend Analysis: Study UHI evolution over multi-decade periods.
 Climate Change Projections: Integrate climate models to predict future UHI scenarios.
 Interactive Dashboard: Build a web-based dashboard (e.g., using Streamlit or Dash) for dynamic exploration of results.
+
 📄 License
 This project is licensed under the MIT License - see the LICENSE file for details.
