@@ -1,4 +1,4 @@
-🛰️ Advanced Urban Heat Island Analysis with GEE & Machine Learning
+##🛰️ Advanced Urban Heat Island Analysis with GEE & Machine Learning
 ![alt text](https://img.shields.io/badge/Python-3.9%2B-blue.svg) ![alt text](https://img.shields.io/badge/License-MIT-yellow.svg) ![alt text](https://img.shields.io/github/stars/ArhamOrioner/UHI-Analysis?style=social) ![alt text](https://img.shields.io/github/issues/ArhamOrioner/UHI-Analysis)
 
 This repository provides a powerful, modular, and command-line-driven framework for detecting, analyzing, and predicting Urban Heat Islands (UHIs) in any city worldwide. It leverages the planetary-scale data catalog of Google Earth Engine (GEE) for efficient satellite imagery acquisition and uses a robust Python stack (Scikit-learn, GeoPandas, SHAP) to deliver deep, actionable insights.
@@ -64,58 +64,45 @@ Prerequisites
 Python 3.9+
 Git
 
-Step 1: Set Up Your Environment
-You have two options for setting up the environment. The Cloud Shell method is highly recommended for its simplicity.
-Option A (Recommended): Google Cloud Shell
-The easiest way to run this project is through the free Google Cloud Shell, as it comes pre-installed with the Google Cloud SDK and handles GEE authentication automatically.
-Open Google Cloud Shell.
-Clone the repository:
-code
-Bash
+Step 1: Clone the repository:
+```bash
 git clone https://github.com/ArhamOrioner/UHI-Analysis.git
 cd UHI-Analysis
-Proceed to Step 2.
-Option B: Local Machine
-If you run this on your own machine, you must authenticate with Google Earth Engine once.
-Sign up for a free GEE account: earthengine.google.com/signup
-Install the Google Cloud CLI: cloud.google.com/sdk/docs/install
-Authenticate your GEE account in your terminal:
-code
-Bash
-earthengine authenticate
-Clone the repository:
-code
-Bash
-git clone https://github.com/ArhamOrioner/UHI-Analysis.git
-cd UHI-Analysis
-
+```
 Step 2: Install Dependencies
 It's highly recommended to use a Python virtual environment.
-Create a virtual environment:
-code
-Bash
-python3 -m venv venv
-Activate it:
-code
-Bash
-source venv/bin/activate
-Install required packages from the requirements file:
-code
-Bash
-pip install -r requirements.txt
 
+```bash
+Copy
+Edit
+# Create a virtual environment
+python3 -m venv venv
+
+# Activate it
+source venv/bin/activate
+
+# Install required packages from the requirements file
+pip install -r requirements.txt
+```
 Step 3: Run an Analysis
 Execute the analysis using app.py. The script will automatically find the geographic boundaries for the specified city.
+
 Basic Example (Las Vegas, 2023)
-code
-Bash
+
+```bash
+Copy
+Edit
 python app.py --city "Las Vegas" --years 2023
 Multi-Year Example (Dubai, MODIS data)
-code
-Bash
+```
+```bash
+Copy
+Edit
 python app.py --city "Dubai" --years 2022 2023 --source MODIS
-Note: A full analysis for a single year can take 5-10 minutes to complete, depending on the size of the city and the number of available satellite images. The hyperparameter tuning step is the most time-intensive part.
+```
+Note: A full analysis for a single year can take 5–10 minutes to complete, depending on the size of the city and the number of available satellite images. The hyperparameter tuning step is the most time-intensive part.
 All results, including plots, logs, and the interactive map, will be saved in the outputs/ directory.
+
 
 🔮 Future Enhancements
 Advanced Feature Integration: Incorporate population density, building height, and wind patterns.
