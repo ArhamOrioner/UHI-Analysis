@@ -28,13 +28,13 @@ The analysis produces a suite of publication-quality infographics that visually 
 ### UHI Zone Distribution & Feature Correlation Matrix
 <div align="center">
   <img src="https://github.com/user-attachments/assets/f82b3db6-3c90-4126-a19d-2db0dc53e20b" alt="feature_distributions" width="48%"/>
-  <img src="https://github.com/user-attachments/assets/8dff639e-51da-4d4a-81e1-61331c030497" alt="scatter_relationships" width="48%"/>
+  <img src="https://github.com/user-attachments/assets/3260ded5-f839-4d6b-b672-0da038f07bf9" alt="scatter_relationships" width="48%"/>
 </div>
 <div align="center">
-  <img src="https://github.com/user-attachments/assets/3260ded5-f839-4d6b-b672-0da038f07bf9" alt="model_evaluation" width="80%"/>
+  <img src="https://github.com/user-attachments/assets/8dff639e-51da-4d4a-81e1-61331c030497" alt="model_evaluation" width="80%"/>
 </div>
 
-
+https://github.com/user-attachments/assets/3260ded5-f839-4d6b-b672-0da038f07bf9
 ⚙️ Key Features & Methodology
 This project is a complete, end-to-end pipeline for UHI analysis.
 Powerful Command-Line Interface: Run the entire analysis for any city with a single command. app.py handles all configuration through intuitive arguments.
