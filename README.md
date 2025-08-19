@@ -1,16 +1,16 @@
-##🛰️ Advanced Urban Heat Island Analysis with GEE & Machine Learning
+##🛰️ Advanced Urban Heat Island Analysis with GEE & Machine Learning##
 ![alt text](https://img.shields.io/badge/Python-3.9%2B-blue.svg) ![alt text](https://img.shields.io/badge/License-MIT-yellow.svg) ![alt text](https://img.shields.io/github/stars/ArhamOrioner/UHI-Analysis?style=social) ![alt text](https://img.shields.io/github/issues/ArhamOrioner/UHI-Analysis)
 
 This repository provides a powerful, modular, and command-line-driven framework for detecting, analyzing, and predicting Urban Heat Islands (UHIs) in any city worldwide. It leverages the planetary-scale data catalog of Google Earth Engine (GEE) for efficient satellite imagery acquisition and uses a robust Python stack (Scikit-learn, GeoPandas, SHAP) to deliver deep, actionable insights.
 The entire analysis is now orchestrated through a clean command-line interface (app.py), making it simple to configure and run complex geospatial workflows for different cities and years.
 
-✨ Showcase: Uncovering the Las Vegas Heat Island
+#✨ Showcase: Uncovering the Las Vegas Heat Island#
 To demonstrate the power of this tool, here are the final results from a full annual analysis of Las Vegas for the year 2024.
 Final Summary Report
 The analysis provides a clear, human-readable summary of the key findings, including the quantified UHI effect and the performance of the predictive model.
 <img width="1234" height="344" alt="Screenshot 2025-08-19 220943" src="https://github.com/user-attachments/assets/d828b1ed-a5b5-43b7-85d3-dfc307c22837" />
 
-Interactive Map
+#Interactive Map#
 An enhanced interactive map is generated, featuring multiple professional baselayers (including dark mode and satellite), a fullscreen button, and a comprehensive legend.
 ![ScreenRecording2025-08-19221122-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/2d51ac7d-91ac-49d8-921e-794f1e55306e)
 
@@ -73,8 +73,6 @@ Step 2: Install Dependencies
 It's highly recommended to use a Python virtual environment.
 
 ```bash
-Copy
-Edit
 # Create a virtual environment
 python3 -m venv venv
 
@@ -90,14 +88,10 @@ Execute the analysis using app.py. The script will automatically find the geogra
 Basic Example (Las Vegas, 2023)
 
 ```bash
-Copy
-Edit
 python app.py --city "Las Vegas" --years 2023
 Multi-Year Example (Dubai, MODIS data)
 ```
 ```bash
-Copy
-Edit
 python app.py --city "Dubai" --years 2022 2023 --source MODIS
 ```
 Note: A full analysis for a single year can take 5–10 minutes to complete, depending on the size of the city and the number of available satellite images. The hyperparameter tuning step is the most time-intensive part.
