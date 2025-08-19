@@ -16,17 +16,23 @@ An enhanced interactive map is generated, featuring multiple professional basela
 
 Key Visual Insights
 The analysis produces a suite of publication-quality infographics that visually explain the UHI phenomenon and the factors driving it.
-Hot/Cold Spot Analysis	Model Performance
-<img width="2824" height="2257" alt="2024_hot_spots" src="https://github.com/user-attachments/assets/5a785621-f866-44c4-8263-b6cd503143ad" />
-<img width="2344" height="2056" alt="correlation_matrix" src="https://github.com/user-attachments/assets/b1a5f546-a2b4-4075-b6a9-f646dc92c3df" />
-<img width="4005" height="1766" alt="2024_uhi_zones" src="https://github.com/user-attachments/assets/acefb1fe-5445-4389-ade7-11e916958766" />
+### Hot/Cold Spot Analysis & Model Performance
+<div align="center">
+  <img src="https://github.com/user-attachments/assets/5a785621-f866-44c4-8263-b6cd503143ad" alt="2024_hot_spots" width="48%"/>
+  <img src="https://github.com/user-attachments/assets/b1a5f546-a2b4-4075-b6a9-f646dc92c3df" alt="correlation_matrix" width="48%"/>
+</div>
+<div align="center">
+  <img src="https://github.com/user-attachments/assets/acefb1fe-5445-4389-ade7-11e916958766" alt="2024_uhi_zones" width="80%"/>
+</div>
 
-
-UHI Zone Distribution	Feature Correlation Matrix
-<img width="5370" height="4186" alt="feature_distributions" src="https://github.com/user-attachments/assets/f82b3db6-3c90-4126-a19d-2db0dc53e20b" />
-<img width="5370" height="2074" alt="scatter_relationships" src="https://github.com/user-attachments/assets/8dff639e-51da-4d4a-81e1-61331c030497" />
-<img width="4767" height="3570" alt="model_evaluation" src="https://github.com/user-attachments/assets/3260ded5-f839-4d6b-b672-0da038f07bf9" />
-
+### UHI Zone Distribution & Feature Correlation Matrix
+<div align="center">
+  <img src="https://github.com/user-attachments/assets/f82b3db6-3c90-4126-a19d-2db0dc53e20b" alt="feature_distributions" width="48%"/>
+  <img src="https://github.com/user-attachments/assets/8dff639e-51da-4d4a-81e1-61331c030497" alt="scatter_relationships" width="48%"/>
+</div>
+<div align="center">
+  <img src="https://github.com/user-attachments/assets/3260ded5-f839-4d6b-b672-0da038f07bf9" alt="model_evaluation" width="80%"/>
+</div>
 
 
 ⚙️ Key Features & Methodology
