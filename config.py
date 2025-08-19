@@ -1,6 +1,5 @@
-
 from dataclasses import dataclass, field
-from typing import Dict, List, Tuple, Union
+from typing import Dict, List, Tuple, Union, Optional
 
 @dataclass
 class AnalysisConfig:
@@ -9,14 +8,13 @@ class AnalysisConfig:
 
     # Region of Interest
     city_name: str = "Mumbai"
-    roi_bounds: List[float] = field(default_factory=lambda: [72.7, 18.8, 73.2, 19.3])  # [west, south, east, north]
+    roi_bounds: Optional[List[float]] = None
 
     # Temporal
     analysis_years: List[int] = field(default_factory=lambda: [2022, 2023])
-    seasons_to_analyze: Dict[str, Tuple[int, int]] = field(
-        default_factory=lambda: {"Summer": (6, 8), "Winter": (12, 2)}
-    )
-    start_date: str = "2022-01-01"  # used for overall map layers
+    # NOTE: Seasonal analysis has been removed in favor of full-year analysis.
+    # The start_date and end_date are now used only for the overall map layers.
+    start_date: str = "2022-01-01"
     end_date: str = "2023-12-31"
 
     # Data sources and resolution
