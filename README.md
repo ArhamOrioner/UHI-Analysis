@@ -1,57 +1,107 @@
-# Urban Heat Island (UHI) Analysis – Modular Pipeline
+🛰️ Advanced Urban Heat Island Analysis with GEE & Machine Learning
+![alt text](https://img.shields.io/badge/Python-3.9%2B-blue.svg)
 
-This is a clean, modular rewrite of your UHI script. It fetches data from Google Earth Engine (GEE), samples pixels to a DataFrame, performs EDA, detects UHI zones, runs hot spot analysis (Gi*), trains a Random Forest regressor for LST prediction, generates plots, and creates an interactive Folium map.
+![alt text](https://img.shields.io/badge/License-MIT-yellow.svg)
 
-## Quick start
+![alt text](https://img.shields.io/github/stars/ArhamOrioner/UHI-Analysis?style=social)
 
-1) Install dependencies (prefer a virtual environment):
+![alt text](https://img.shields.io/github/issues/ArhamOrioner/UHI-Analysis)
+This repository provides a powerful, modular, and command-line-driven framework for detecting, analyzing, and predicting Urban Heat Islands (UHIs) in any city worldwide. It leverages the planetary-scale data catalog of Google Earth Engine (GEE) for efficient satellite imagery acquisition and uses a robust Python stack (Scikit-learn, GeoPandas, SHAP) to deliver deep, actionable insights.
+The entire analysis is now orchestrated through a clean command-line interface (app.py), making it simple to configure and run complex geospatial workflows for different cities and years.
+✨ Showcase: Uncovering the Las Vegas Heat Island
+To demonstrate the power of this tool, here are the final results from a full annual analysis of Las Vegas for the year 2024.
+Final Summary Report
+The analysis provides a clear, human-readable summary of the key findings, including the quantified UHI effect and the performance of the predictive model.
+![alt text](https://github.com/user-attachments/assets/c9049e7b-c323-45a4-9e79-880486c06a38)<img width="1234" height="344" alt="Screenshot 2025-08-19 220943" src="https://github.com/user-attachments/assets/d828b1ed-a5b5-43b7-85d3-dfc307c22837" />
 
-```
-pip install -r requirements.txt
-```
-
-2) Authenticate Earth Engine (one-time):
-
-```
+Interactive Map
+An enhanced interactive map is generated, featuring multiple professional baselayers (including dark mode and satellite), a fullscreen button, and a comprehensive legend.
+![alt text](https://github.com/user-attachments/assets/baf294b7-9d70-4578-85eb-b63b78c6758f)
+Key Visual Insights
+The analysis produces a suite of publication-quality infographics that visually explain the UHI phenomenon and the factors driving it.
+Hot/Cold Spot Analysis	Model Performance
+![alt text](https://github.com/user-attachments/assets/b839b23b-0143-424a-9e12-3b8543788220)
+![alt text](https://github.com/user-attachments/assets/b0a9fc6c-54a7-47b7-951c-81347895e005)
+UHI Zone Distribution	Feature Correlation Matrix
+![alt text](https://github.com/user-attachments/assets/65e9057b-77f4-4da9-b472-35cd294a2b9d)
+![alt text](https://github.com/user-attachments/assets/6eb014fa-f9be-48e0-a92c-e35f60638706)
+⚙️ Key Features & Methodology
+This project is a complete, end-to-end pipeline for UHI analysis.
+Powerful Command-Line Interface: Run the entire analysis for any city with a single command. app.py handles all configuration through intuitive arguments.
+Automated Data Acquisition (GEE): Programmatically fetches and preprocesses key satellite datasets:
+Land Surface Temperature (LST): From MODIS or Landsat 8.
+Spectral Indices: NDVI (Vegetation) & NDBI (Built-up).
+Land Cover: High-resolution ESA WorldCover.
+Topography: Elevation, Slope, and Aspect from SRTM DEM.
+Annual Analysis Engine: The logic is now built to perform a complete, self-contained analysis for each specified year, handling past years and the current year (up to the latest available data) automatically.
+Advanced Analytics:
+UHI Intensity: Quantifies the temperature difference between urban and rural areas.
+K-Means Clustering: Automatically identifies distinct temperature zones (Cool, Mild, Hot) within the city.
+Hot Spot Analysis (Getis-Ord Gi*): Pinpoints statistically significant clusters of extreme heat and cold.
+Predictive Modeling & Interpretability:
+Trains a Random Forest Regressor to predict temperature based on landscape features.
+Includes hyperparameter tuning (RandomizedSearchCV) for optimal model performance.
+Integrates SHAP (SHapley Additive exPlanations) to explain why the model makes its predictions, identifying the most influential factors.
+Professional Outputs:
+Generates a suite of enhanced, clearly labeled PNG infographics.
+Produces a polished, multi-layer interactive HTML map.
+Logs a final, easy-to-understand summary report to the console.
+🚀 Getting Started
+Follow these steps to set up the project and run your first analysis.
+Prerequisites
+Python 3.9+
+Git
+Step 1: Set Up Your Environment
+You have two options for setting up the environment. The Cloud Shell method is highly recommended for its simplicity.
+Option A (Recommended): Google Cloud Shell
+The easiest way to run this project is through the free Google Cloud Shell, as it comes pre-installed with the Google Cloud SDK and handles GEE authentication automatically.
+Open Google Cloud Shell.
+Clone the repository:
+code
+Bash
+git clone https://github.com/ArhamOrioner/UHI-Analysis.git
+cd UHI-Analysis
+Proceed to Step 2.
+Option B: Local Machine
+If you run this on your own machine, you must authenticate with Google Earth Engine once.
+Sign up for a free GEE account: earthengine.google.com/signup
+Install the Google Cloud CLI: cloud.google.com/sdk/docs/install
+Authenticate your GEE account in your terminal:
+code
+Bash
 earthengine authenticate
-```
+```4.  Clone the repository:
+```bash
+git clone https://github.com/ArhamOrioner/UHI-Analysis.git
+cd UHI-Analysis
+Step 2: Install Dependencies
+It's highly recommended to use a Python virtual environment.
+code
+Bash
+# Create a virtual environment
+python3 -m venv venv
 
-3) Run the pipeline (examples):
+# Activate it
+source venv/bin/activate
 
-```
-python app.py --city "Mumbai" --years 2022 2023 --source MODIS --resolution 1000 --pixels 5000
-
-# or use explicit bounds (west south east north)
-python app.py --roi-bounds 72.7 18.8 73.2 19.3 --years 2022 2023 --source MODIS
-```
-
-Outputs are saved to the `outputs` directory by default.
-
-## Project layout
-
-```
-Project/
-  app.py                 # CLI entrypoint
-  requirements.txt       # Dependencies
-  README.md              # This file
-  uhi/
-    __init__.py
-    config.py            # Dataclass config
-    utils.py             # Logging, ROI lookup, helpers
-    gee.py               # Earth Engine data access
-    sampling.py          # Sampling to DataFrame
-    eda.py               # EDA plots
-    clustering.py        # KMeans, zone labeling, plots
-    spatial.py           # Getis-Ord Gi* hot/cold spots + plot
-    map.py               # Folium map creation
-    ml.py                # Feature prep, RF training, eval, SHAP
-    pipeline.py          # Orchestration
-```
-
-## Notes
-
-- By default, the pipeline uses KNN spatial weights (k=8) for Gi* to avoid mixing meters with degrees.
-- RandomForest does not require feature scaling, so none is applied.
-- You can adjust behavior via CLI flags; see `python app.py -h`.
-
-
+# Install required packages from the requirements file
+pip install -r requirements.txt
+Step 3: Run an Analysis
+Execute the analysis using app.py. The script will automatically find the geographic boundaries for the specified city.
+Basic Example (Las Vegas, 2023)
+code
+Bash
+python app.py --city "Las Vegas" --years 2023
+Multi-Year Example (Dubai, MODIS data)
+code
+Bash
+python app.py --city "Dubai" --years 2022 2023 --source MODIS
+Note: A full analysis for a single year can take 5-10 minutes to complete, depending on the size of the city and the number of available satellite images. The hyperparameter tuning step is the most time-intensive part.
+All results, including plots, logs, and the interactive map, will be saved in the outputs/ directory.
+🔮 Future Enhancements
+Advanced Feature Integration: Incorporate population density, building height, and wind patterns.
+Temporal Trend Analysis: Study UHI evolution over multi-decade periods.
+Climate Change Projections: Integrate climate models to predict future UHI scenarios.
+Interactive Dashboard: Build a web-based dashboard (e.g., using Streamlit or Dash) for dynamic exploration of results.
+📄 License
+This project is licensed under the MIT License - see the LICENSE file for details.
