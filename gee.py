@@ -1,5 +1,5 @@
 import logging
-from typing import Optional
+from typing import Optional, Tuple
 
 import ee
 
@@ -30,7 +30,8 @@ def get_modis_lst(roi: ee.Geometry, start_date: str, end_date: str) -> Optional[
         lst_c = (
             mean_kelvin.multiply(0.02).subtract(273.15).focal_median(radius=3, units="pixels").rename("LST_Celsius")
         )
-        return lst_c
+        # CRITICAL FIX: Clip the final image to the ROI
+        return lst_c.clip(roi)
     except Exception as exc:
         logging.error("MODIS LST error: %s", exc)
         return None
@@ -60,13 +61,14 @@ def get_landsat_lst(roi: ee.Geometry, start_date: str, end_date: str) -> Optiona
             return st_c.updateMask(cloud_mask)
 
         lst = col.map(mapper).mean()
-        return lst
+        # CRITICAL FIX: Clip the final image to the ROI
+        return lst.clip(roi)
     except Exception as exc:
         logging.error("Landsat LST error: %s", exc)
         return None
 
 
-def get_landsat_indices(roi: ee.Geometry, start_date: str, end_date: str):
+def get_landsat_indices(roi: ee.Geometry, start_date: str, end_date: str) -> Tuple[Optional[ee.Image], Optional[ee.Image]]:
     try:
         col = ee.ImageCollection("LANDSAT/LC08/C02/T1_L2").filterDate(start_date, end_date).filterBounds(roi)
         if col.size().getInfo() == 0:
@@ -92,7 +94,8 @@ def get_landsat_indices(roi: ee.Geometry, start_date: str, end_date: str):
         processed = col.map(mask_optical).map(add_indices)
         ndvi = processed.select("NDVI").mean()
         ndbi = processed.select("NDBI").mean()
-        return ndvi, ndbi
+        # CRITICAL FIX: Clip the final images to the ROI
+        return ndvi.clip(roi), ndbi.clip(roi)
     except Exception as exc:
         logging.error("Landsat indices error: %s", exc)
         return None, None
@@ -104,7 +107,8 @@ def get_worldcover_landcover(roi: ee.Geometry, year: int) -> Optional[ee.Image]:
             img = ee.Image("ESA/WorldCover/v100/2020").select("Map")
         else:
             img = ee.Image("ESA/WorldCover/v200/2021").select("Map")
-        return img
+        # CRITICAL FIX: Clip the final image to the ROI
+        return img.clip(roi)
     except Exception as exc:
         logging.error("WorldCover error: %s", exc)
         return None
@@ -116,7 +120,9 @@ def get_topographic_features(roi: ee.Geometry) -> Optional[ee.Image]:
         elevation = dem.select("elevation").rename("Elevation")
         slope = ee.Terrain.slope(dem).rename("Slope")
         aspect = ee.Terrain.aspect(dem).rename("Aspect")
-        return elevation.addBands([slope, aspect])
+        combined = elevation.addBands([slope, aspect])
+        # CRITICAL FIX: Clip the final image to the ROI
+        return combined.clip(roi)
     except Exception as exc:
         logging.error("Topographic features error: %s", exc)
         return None
