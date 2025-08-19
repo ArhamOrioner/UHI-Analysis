@@ -1,18 +1,13 @@
 🛰️ Advanced Urban Heat Island Analysis with GEE & Machine Learning
-![alt text](https://img.shields.io/badge/Python-3.9%2B-blue.svg)
+![alt text](https://img.shields.io/badge/Python-3.9%2B-blue.svg) ![alt text](https://img.shields.io/badge/License-MIT-yellow.svg) ![alt text](https://img.shields.io/github/stars/ArhamOrioner/UHI-Analysis?style=social) ![alt text](https://img.shields.io/github/issues/ArhamOrioner/UHI-Analysis)
 
-![alt text](https://img.shields.io/badge/License-MIT-yellow.svg)
-
-![alt text](https://img.shields.io/github/stars/ArhamOrioner/UHI-Analysis?style=social)
-
-![alt text](https://img.shields.io/github/issues/ArhamOrioner/UHI-Analysis)
 This repository provides a powerful, modular, and command-line-driven framework for detecting, analyzing, and predicting Urban Heat Islands (UHIs) in any city worldwide. It leverages the planetary-scale data catalog of Google Earth Engine (GEE) for efficient satellite imagery acquisition and uses a robust Python stack (Scikit-learn, GeoPandas, SHAP) to deliver deep, actionable insights.
 The entire analysis is now orchestrated through a clean command-line interface (app.py), making it simple to configure and run complex geospatial workflows for different cities and years.
 ✨ Showcase: Uncovering the Las Vegas Heat Island
 To demonstrate the power of this tool, here are the final results from a full annual analysis of Las Vegas for the year 2024.
 Final Summary Report
 The analysis provides a clear, human-readable summary of the key findings, including the quantified UHI effect and the performance of the predictive model.
-![alt text]<img width="1234" height="344" alt="Screenshot 2025-08-19 220943" src="https://github.com/user-attachments/assets/d828b1ed-a5b5-43b7-85d3-dfc307c22837" />
+![alt text](<img width="1234" height="344" alt="Screenshot 2025-08-19 220943" src="https://github.com/user-attachments/assets/d828b1ed-a5b5-43b7-85d3-dfc307c22837" />)
 
 Interactive Map
 An enhanced interactive map is generated, featuring multiple professional baselayers (including dark mode and satellite), a fullscreen button, and a comprehensive legend.
