@@ -12,7 +12,7 @@ The entire analysis is now orchestrated through a clean command-line interface (
 To demonstrate the power of this tool, here are the final results from a full annual analysis of Las Vegas for the year 2024.
 Final Summary Report
 The analysis provides a clear, human-readable summary of the key findings, including the quantified UHI effect and the performance of the predictive model.
-![alt text](https://github.com/user-attachments/assets/c9049e7b-c323-45a4-9e79-880486c06a38)<img width="1234" height="344" alt="Screenshot 2025-08-19 220943" src="https://github.com/user-attachments/assets/d828b1ed-a5b5-43b7-85d3-dfc307c22837" />
+![alt text]<img width="1234" height="344" alt="Screenshot 2025-08-19 220943" src="https://github.com/user-attachments/assets/d828b1ed-a5b5-43b7-85d3-dfc307c22837" />
 
 Interactive Map
 An enhanced interactive map is generated, featuring multiple professional baselayers (including dark mode and satellite), a fullscreen button, and a comprehensive legend.
