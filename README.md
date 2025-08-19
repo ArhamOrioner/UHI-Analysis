@@ -1,20 +1,20 @@
-##🛰️ Advanced Urban Heat Island Analysis with GEE & Machine Learning##
+# 🛰️ Advanced Urban Heat Island Analysis with GEE & Machine Learning
 ![alt text](https://img.shields.io/badge/Python-3.9%2B-blue.svg) ![alt text](https://img.shields.io/badge/License-MIT-yellow.svg) ![alt text](https://img.shields.io/github/stars/ArhamOrioner/UHI-Analysis?style=social) ![alt text](https://img.shields.io/github/issues/ArhamOrioner/UHI-Analysis)
 
 This repository provides a powerful, modular, and command-line-driven framework for detecting, analyzing, and predicting Urban Heat Islands (UHIs) in any city worldwide. It leverages the planetary-scale data catalog of Google Earth Engine (GEE) for efficient satellite imagery acquisition and uses a robust Python stack (Scikit-learn, GeoPandas, SHAP) to deliver deep, actionable insights.
 The entire analysis is now orchestrated through a clean command-line interface (app.py), making it simple to configure and run complex geospatial workflows for different cities and years.
 
-#✨ Showcase: Uncovering the Las Vegas Heat Island#
+## ✨ Showcase: Uncovering the Las Vegas Heat Island
 To demonstrate the power of this tool, here are the final results from a full annual analysis of Las Vegas for the year 2024.
 Final Summary Report
 The analysis provides a clear, human-readable summary of the key findings, including the quantified UHI effect and the performance of the predictive model.
 <img width="1234" height="344" alt="Screenshot 2025-08-19 220943" src="https://github.com/user-attachments/assets/d828b1ed-a5b5-43b7-85d3-dfc307c22837" />
 
-#Interactive Map#
+### Interactive Map
 An enhanced interactive map is generated, featuring multiple professional baselayers (including dark mode and satellite), a fullscreen button, and a comprehensive legend.
 ![ScreenRecording2025-08-19221122-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/2d51ac7d-91ac-49d8-921e-794f1e55306e)
 
-Key Visual Insights
+### Key Visual Insights
 The analysis produces a suite of publication-quality infographics that visually explain the UHI phenomenon and the factors driving it.
 ### Hot/Cold Spot Analysis & Model Performance
 <div align="center">
@@ -35,7 +35,7 @@ The analysis produces a suite of publication-quality infographics that visually 
 </div>
 
 
-⚙️ Key Features & Methodology
+## ⚙️ Key Features & Methodology
 This project is a complete, end-to-end pipeline for UHI analysis.
 Powerful Command-Line Interface: Run the entire analysis for any city with a single command. app.py handles all configuration through intuitive arguments.
 Automated Data Acquisition (GEE): Programmatically fetches and preprocesses key satellite datasets:
@@ -45,7 +45,7 @@ Land Cover: High-resolution ESA WorldCover.
 Topography: Elevation, Slope, and Aspect from SRTM DEM.
 Annual Analysis Engine: The logic is now built to perform a complete, self-contained analysis for each specified year, handling past years and the current year (up to the latest available data) automatically.
 
-Advanced Analytics:
+### Advanced Analytics:
 UHI Intensity: Quantifies the temperature difference between urban and rural areas.
 K-Means Clustering: Automatically identifies distinct temperature zones (Cool, Mild, Hot) within the city.
 Hot Spot Analysis (Getis-Ord Gi*): Pinpoints statistically significant clusters of extreme heat and cold.
@@ -58,7 +58,7 @@ Generates a suite of enhanced, clearly labeled PNG infographics.
 Produces a polished, multi-layer interactive HTML map.
 Logs a final, easy-to-understand summary report to the console.
 
-🚀 Getting Started
+## 🚀 Getting Started
 Follow these steps to set up the project and run your first analysis.
 Prerequisites
 Python 3.9+
@@ -98,11 +98,11 @@ Note: A full analysis for a single year can take 5–10 minutes to complete, dep
 All results, including plots, logs, and the interactive map, will be saved in the outputs/ directory.
 
 
-🔮 Future Enhancements
+## 🔮 Future Enhancements
 Advanced Feature Integration: Incorporate population density, building height, and wind patterns.
 Temporal Trend Analysis: Study UHI evolution over multi-decade periods.
 Climate Change Projections: Integrate climate models to predict future UHI scenarios.
 Interactive Dashboard: Build a web-based dashboard (e.g., using Streamlit or Dash) for dynamic exploration of results.
 
-📄 License
+## 📄 License
 This project is licensed under the MIT License - see the LICENSE file for details.
