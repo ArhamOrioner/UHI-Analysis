@@ -34,7 +34,7 @@ The analysis produces a suite of publication-quality infographics that visually 
   <img src="https://github.com/user-attachments/assets/8dff639e-51da-4d4a-81e1-61331c030497" alt="model_evaluation" width="80%"/>
 </div>
 
-https://github.com/user-attachments/assets/3260ded5-f839-4d6b-b672-0da038f07bf9
+
 ⚙️ Key Features & Methodology
 This project is a complete, end-to-end pipeline for UHI analysis.
 Powerful Command-Line Interface: Run the entire analysis for any city with a single command. app.py handles all configuration through intuitive arguments.
@@ -82,8 +82,9 @@ Authenticate your GEE account in your terminal:
 code
 Bash
 earthengine authenticate
-```4.  Clone the repository:
-```bash
+Clone the repository:
+code
+Bash
 git clone https://github.com/ArhamOrioner/UHI-Analysis.git
 cd UHI-Analysis
 Step 2: Install Dependencies
@@ -110,7 +111,6 @@ Bash
 python app.py --city "Dubai" --years 2022 2023 --source MODIS
 Note: A full analysis for a single year can take 5-10 minutes to complete, depending on the size of the city and the number of available satellite images. The hyperparameter tuning step is the most time-intensive part.
 All results, including plots, logs, and the interactive map, will be saved in the outputs/ directory.
-
 🔮 Future Enhancements
 Advanced Feature Integration: Incorporate population density, building height, and wind patterns.
 Temporal Trend Analysis: Study UHI evolution over multi-decade periods.
