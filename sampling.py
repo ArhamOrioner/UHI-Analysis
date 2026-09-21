@@ -1,31 +1,33 @@
+"""Bounded, reproducible sampling on the explicit analysis grid."""
+
 import logging
-from typing import Optional
+
 import ee
-import geemap
 import pandas as pd
 
-def sample_to_dataframe(image: ee.Image, roi: ee.Geometry, num_pixels: int, scale_m: int, random_state: int) -> Optional[pd.DataFrame]:
-    """Samples points from a GEE Image and converts to a Pandas DataFrame."""
-    try:
-        # Use geometries=True to extract lat/lon coordinates
-        fc = image.sample(
-            region=roi,
-            scale=scale_m,
-            numPixels=num_pixels,
-            seed=random_state,
-            geometries=True,
-        )
-        # Explicitly add lat/lon as properties for the conversion
-        fc = fc.map(lambda f: f.set({
-            "longitude": f.geometry().coordinates().get(0),
-            "latitude": f.geometry().coordinates().get(1),
-        }))
-        df = geemap.ee_to_df(fc)
-        if df.empty:
-            logging.warning("No samples were returned from Google Earth Engine.")
-            return None
-        logging.info("Successfully sampled %d pixels into a DataFrame.", len(df))
-        return df
-    except Exception as exc:
-        logging.error("GEE sampling failed: %s", exc)
-        return None
+from gee import ANALYSIS_CRS
+
+
+def sample_to_dataframe(
+    image: ee.Image, roi: ee.Geometry, num_pixels: int, scale_m: int, random_state: int
+) -> pd.DataFrame:
+    fc = image.sample(
+        region=roi,
+        projection=ee.Projection(ANALYSIS_CRS).atScale(scale_m),
+        numPixels=num_pixels,
+        seed=random_state,
+        geometries=True,
+        dropNulls=True,
+        tileScale=4,
+    )
+    records = []
+    for feature in fc.getInfo()["features"]:
+        lon, lat = feature["geometry"]["coordinates"][:2]
+        records.append({**feature["properties"], "longitude": lon, "latitude": lat})
+    df = pd.DataFrame.from_records(records)
+    logging.info(
+        "Sampled %d complete grid cells (requested approximately %d).",
+        len(df),
+        num_pixels,
+    )
+    return df

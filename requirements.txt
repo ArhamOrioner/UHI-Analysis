@@ -1,5 +1,4 @@
 earthengine-api>=0.1.385
-geemap>=0.30.5
 folium>=0.16.0
 requests>=2.31.0
 pandas>=2.2.2
@@ -11,4 +10,4 @@ scipy>=1.12.0
 libpysal>=4.10.0
 esda>=2.5.0
 shap>=0.44.1
-
+pyproj>=3.6.0
